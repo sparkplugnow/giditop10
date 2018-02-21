@@ -1,0 +1,122 @@
+{
+"main": [	{
+		"artist": "Ed Sheeran",
+		"music": "Barcelona.mp3",
+		"albumArt": "sheeran"
+	},
+
+	{
+		"artist": "Enya",
+		"music": "Book of Days.mp3",
+		"albumArt": "enya"
+	},
+
+	{
+		"artist": "Lorde",
+		"music": "Buzzcut Season.mp3",
+		"albumArt": "lorde"
+	},
+
+	{
+		"artist": "Adele",
+		"music": "Cant Let Go.m4a",
+		"albumArt": "adele"
+	},
+
+	{
+		"artist": "Ajuju",
+		"music": "Chante.mp3",
+		"albumArt": "ajuju"
+	},
+
+	{
+		"artist": "Asa",
+		"music": "Dead Again.mp3",
+		"albumArt": "asa"
+	},
+
+	{
+		"artist": "Asa",
+		"music": "Eyo.mp3",
+		"albumArt": "asa"
+	},
+
+	{
+		"artist": "Lorde",
+		"music": "Green Light.mp3",
+		"albumArt": "lorde"
+	},
+
+	{
+		"artist": "Adele",
+		"music": "Hello.m4a",
+		"albumArt": "adele"
+	},
+
+	{
+		"artist": "Lorde",
+		"music": "Liability.mp3",
+		"albumArt": "lorde"
+	},
+
+	{
+		"artist": "Adele",
+		"music": "Love in the Dark.m4a",
+		"albumArt": "adele"
+	},
+
+	{
+		"artist": "Ed Sheeran",
+		"music": "Nancy Mulligan.mp3",
+		"albumArt": "sheeran"
+	},
+
+	{
+		"artist": "Enya",
+		"music": "Only Time.mp3",
+		"albumArt": "enya"
+	},
+
+	{
+		"artist": "Adele",
+		"music": "Remedy.m4a",
+		"albumArt": "adele"
+	},
+
+	{
+		"artist": "Lorde",
+		"music": "Royals.mp3",
+		"albumArt": "lorde"
+	},
+
+	{
+		"artist": "Ed Sheeran",
+		"music": "Shape of You.mp3",
+		"albumArt": "sheeran"
+	},
+
+	{
+		"artist": "Asa",
+		"music": "Sometimes I Wonder.mp3",
+		"albumArt": "asa"
+	},
+
+	{
+		"artist": "Lorde",
+		"music": "Supercut.mp3",
+		"albumArt": "lorde"
+	},
+
+	{
+		"artist": "Asa",
+		"music": "The One That Never Comes.mp3",
+		"albumArt": "asa"
+	},
+
+	{
+		"artist": "Adele",
+		"music": "When We Were Young.m4a",
+		"albumArt": "adele"
+	}
+]
+}		
