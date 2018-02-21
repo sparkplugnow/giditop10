@@ -1,122 +1,193 @@
 {
-"main": [	{
-		"artist": "Ed Sheeran",
-		"music": "Barcelona.mp3",
-		"albumArt": "sheeran"
+	"number_of_plays": 191,
+	"owner": {
+		"name": "Admin"
 	},
-
-	{
-		"artist": "Enya",
-		"music": "Book of Days.mp3",
-		"albumArt": "enya"
-	},
-
-	{
-		"artist": "Lorde",
-		"music": "Buzzcut Season.mp3",
-		"albumArt": "lorde"
-	},
-
-	{
-		"artist": "Adele",
-		"music": "Cant Let Go.m4a",
-		"albumArt": "adele"
-	},
-
-	{
-		"artist": "Ajuju",
-		"music": "Chante.mp3",
-		"albumArt": "ajuju"
-	},
-
-	{
-		"artist": "Asa",
-		"music": "Dead Again.mp3",
-		"albumArt": "asa"
-	},
-
-	{
-		"artist": "Asa",
-		"music": "Eyo.mp3",
-		"albumArt": "asa"
-	},
-
-	{
-		"artist": "Lorde",
-		"music": "Green Light.mp3",
-		"albumArt": "lorde"
-	},
-
-	{
-		"artist": "Adele",
-		"music": "Hello.m4a",
-		"albumArt": "adele"
-	},
-
-	{
-		"artist": "Lorde",
-		"music": "Liability.mp3",
-		"albumArt": "lorde"
-	},
-
-	{
-		"artist": "Adele",
-		"music": "Love in the Dark.m4a",
-		"albumArt": "adele"
-	},
-
-	{
-		"artist": "Ed Sheeran",
-		"music": "Nancy Mulligan.mp3",
-		"albumArt": "sheeran"
-	},
-
-	{
-		"artist": "Enya",
-		"music": "Only Time.mp3",
-		"albumArt": "enya"
-	},
-
-	{
-		"artist": "Adele",
-		"music": "Remedy.m4a",
-		"albumArt": "adele"
-	},
-
-	{
-		"artist": "Lorde",
-		"music": "Royals.mp3",
-		"albumArt": "lorde"
-	},
-
-	{
-		"artist": "Ed Sheeran",
-		"music": "Shape of You.mp3",
-		"albumArt": "sheeran"
-	},
-
-	{
-		"artist": "Asa",
-		"music": "Sometimes I Wonder.mp3",
-		"albumArt": "asa"
-	},
-
-	{
-		"artist": "Lorde",
-		"music": "Supercut.mp3",
-		"albumArt": "lorde"
-	},
-
-	{
-		"artist": "Asa",
-		"music": "The One That Never Comes.mp3",
-		"albumArt": "asa"
-	},
-
-	{
-		"artist": "Adele",
-		"music": "When We Were Young.m4a",
-		"albumArt": "adele"
-	}
-]
-}		
+	"tracks": [
+		{
+			"slug": "0rkgU4",
+			"artist": {
+				"name": "Olamide",
+				"slug": "olamide"
+			},
+			"url": "http://southpawgroup.com/gidiradio/songs/gidi/Olamide-Science-Student-prod.-Young-John-x-BBanks.mp3",
+			"title": "Science Student",
+			"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/Olamide-Science-Student.jpg",
+			"plays": 400,
+			"id": 3921,
+			"is_external": true,
+			"album": {
+				"title": "science student olamide",
+				"slug": "science-student-olamide",
+				"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/Olamide-Science-Student.jpg"
+			}
+		},
+		{
+			"slug": "vwB4Mo",
+			"artist": {
+				"name": "Teniola",
+				"slug": "teniola"
+			},
+			"url": "http://southpawgroup.com/gidiradio/songs/Teni - Fargin (Prod. Mystro).mp3",
+			"title": "Fargin",
+			"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/FARGIN-Cover-art-720x720.jpg",
+			"plays": 1157,
+			"id": 3910,
+			"is_external": true,
+			"album": {
+				"title": "fargin",
+				"slug": "fargin",
+				"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/FARGIN-Cover-art-720x720.jpg"
+			}
+		},
+		{
+			"slug": "soDjMH",
+			"artist": {
+				"name": "Mr Eazi",
+				"slug": ""
+			},
+			"url": "http://southpawgroup.com/gidiradio/songs/Mr-Eazi-POUR-ME-WATER.mp3",
+			"title": "Pour Me Water",
+			"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/Pour-Me-Water-Single.jpg",
+			"plays": 575,
+			"id": 3859,
+			"is_external": true,
+			"album": {
+				"title": "pour me water",
+				"slug": "pour-me-water",
+				"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/Pour-Me-Water-Single.jpg"
+			}
+		},
+		{
+			"slug": "aKIBVG",
+			"artist": {
+				"name": "Dj Consequence",
+				"slug": "dj-consequence"
+			},
+			"url": "http://southpawgroup.com/gidiradio/songs/Dj consequence feat Olamide-assignment.mp3",
+			"title": "Assignment ft Olamide",
+			"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/DJ-Consequence-x-Olamide-Assignment-Prod.-by-Youngjonn.jpg",
+			"plays": 480,
+			"id": 3909,
+			"is_external": true,
+			"album": {
+				"title": "assignment",
+				"slug": "assignment",
+				"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/DJ-Consequence-x-Olamide-Assignment-Prod.-by-Youngjonn.jpg"
+			}
+		},
+		{
+			"slug": "SAP1bj",
+			"artist": {
+				"name": "zlatan",
+				"slug": "zlatan"
+			},
+			"url": "http://southpawgroup.com/gidiradio/songs/Zlatan_Ft_Olamide_-_My_Body.mp3",
+			"title": "My Body ft Olamide",
+			"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/Zlatan-ft.-Olamide--My-Body-1.jpg",
+			"plays": 964,
+			"id": 3785,
+			"is_external": true,
+			"album": {
+				"title": "My Body",
+				"slug": "my-body",
+				"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/Zlatan-ft.-Olamide--My-Body-1.jpg"
+			}
+		},
+		{
+			"slug": "GtEjyA",
+			"artist": {
+				"name": "Kiss Daniel",
+				"slug": ""
+			},
+			"url": "http://southpawgroup.com/gidiradio/songs/KISS-DANIEL-FLYBOY-I.N.C-NO-DO.mp3",
+			"title": "No Do",
+			"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/no_do.jpg",
+			"plays": 760,
+			"id": 3895,
+			"is_external": true,
+			"album": {
+				"title": "no do -kiss daniel",
+				"slug": "no-do-kiss-daniel",
+				"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/no_do.jpg"
+			}
+		},
+		{
+			"slug": "S6SUxO",
+			"artist": {
+				"name": "Dj Xclusive",
+				"slug": "dj-xclusive"
+			},
+			"url": "http://southpawgroup.com/gidiradio/songs/DJ-Xclusive-Belle-Prod-By-GospelOnDeBeatz.mp3",
+			"title": "Belle",
+			"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/DJ-Xclusive--Belle.jpg",
+			"plays": 883,
+			"id": 3854,
+			"is_external": true,
+			"album": {
+				"title": "belle",
+				"slug": "belle",
+				"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/DJ-Xclusive--Belle.jpg"
+			}
+		},
+		{
+			"slug": "DQaq1c",
+			"artist": {
+				"name": "Masterkraft",
+				"slug": "masterkraft"
+			},
+			"url": "http://southpawgroup.com/gidiradio/songs/Masterkraft-ft.-Wizkid-Reekado-Banks-CDQ-Yapa-Remix.mp3",
+			"title": "Yapa Remix ft Wizkid & Reekado Banks & CDQ.mp3",
+			"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/yapa.jpg",
+			"plays": 468,
+			"id": 3840,
+			"is_external": true,
+			"album": {
+				"title": "Yapa-Remix masterkraft",
+				"slug": "yapa-remix-masterkraft",
+				"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/yapa.jpg"
+			}
+		},
+		{
+			"slug": "Sh7VA4",
+			"artist": {
+				"name": "Reminisce",
+				"slug": "reminisce"
+			},
+			"url": "http://southpawgroup.com/gidiradio/songs/Reminisce_-_Ponmile.mp3",
+			"title": "Ponmile",
+			"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/reminisce.jpg",
+			"plays": 853,
+			"id": 3780,
+			"is_external": true,
+			"album": {
+				"title": "pomile",
+				"slug": "pomile",
+				"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/reminisce.jpg"
+			}
+		},
+		{
+			"slug": "e8PD3u",
+			"artist": {
+				"name": "Reekado Banks",
+				"slug": ""
+			},
+			"url": "http://southpawgroup.com/gidiradio/Reekado-Banks-Like-feat.-tiwa-savage-fiokee.mp3",
+			"title": "Like feat Tiwa Savage & Fiokee ",
+			"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/reekado-banks-like-600x600-1.jpg",
+			"plays": 661,
+			"id": 3896,
+			"is_external": true,
+			"album": {
+				"title": "reekado fiokee",
+				"slug": "reekado-fiokee",
+				"thumbnail": "http://southpawgroup.com/gidiloungeart/images/albums_thumbnail/reekado-banks-like-600x600-1.jpg"
+			}
+		}
+	],
+	"slug": "top-10",
+	"tracks_order": "3921,3910,3859,3909,3785,3895,3854,3840,3780,3896\r\n",
+	"created_at": "2017-02-23T12:39:41.371Z",
+	"title": "2. Top 10 ",
+	"id": 18
+}

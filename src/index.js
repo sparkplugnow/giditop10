@@ -46,7 +46,7 @@ class MusicPlayer extends React.Component {
 
 	componentDidMount() {
 		// Get the array of tracks from the json supplied in result.
-		let tracks = result["main"];
+		let tracks = result.tracks;
 		// After setting the state, load the first song and then proceed to create and display the appropriate thumbnail.
 		// The second action (creating of thumbnail) is passed as a callback function to the createSong function where the 
 		// callback is handled.
@@ -69,8 +69,9 @@ class MusicPlayer extends React.Component {
 		}
 
 		// Create a new Howler object and load the appropriate song.
+		
 		let song = new Howl({
-			src: [require('./music/' + this.state.tracks[this.state.songCount]["music"])],
+			src: [(this.state.tracks[this.state.songCount].url)],
 			onload: () => {
 				// If this is the first time a song is being loaded, don't play automatically.
 				// Otherwise, play the song automatically.
@@ -107,14 +108,14 @@ class MusicPlayer extends React.Component {
 	}
 
 	createThumb(caller, callback) {
-		let art = require('./album_art/' + caller.state.tracks[caller.state.songCount]["albumArt"] + '.jpg');
+		let art =(caller.state.tracks[caller.state.songCount].thumbnail);
 		document.getElementById('thumbnail').src = art;
 		callback ? callback(caller) : 0;
 	}
 
 	createInfo(caller, callback) {
-		let artist = caller.state.tracks[caller.state.songCount]["artist"];
-		let title = caller.state.tracks[caller.state.songCount]["music"].replace(/.mp3|.m4a/, '');
+		let artist = caller.state.tracks[caller.state.songCount].artist.name;
+		let title = caller.state.tracks[caller.state.songCount].title;
 		document.getElementById('artist').textContent = artist;
 		document.getElementById('title').textContent = title;
 		callback ? callback(caller) : 0;
