@@ -11,8 +11,31 @@ import nextButton from './images/next.png';
 class Control extends React.Component {
 	render() {
 		return (
-				<img id={this.props.id} src={this.props.imageUrl} alt="control" onClick={this.props.controlAction} />
+			<div onClick={this.props.controlAction}>
+				<img id={this.props.id} src={this.props.imageUrl} alt="control" />
+			</div>
 			);
+	}
+}
+
+class InfoContainer extends React.Component {
+	render() {
+		let artist = this.props.tracks[this.props.songCount]["artist"];
+		let title = this.props.tracks[this.props.songCount]["music"].replace(/.mp3|.m4a/, '');
+		let initialDuration = (this.props.song ? this.props.song.duration() : 0);
+		let minutes = Math.floor(initialDuration / 60);
+		let seconds = initialDuration%60;
+		function quickFormat(string,pad,length) {
+			return (new Array(length+1).join(pad)+string).slice(-length);
+		}
+		let finalDuration = quickFormat(minutes,'0',2)+':'+quickFormat(seconds,'0',2);
+		return (
+			<div className="info">
+				<Info text={artist} id="artist" />
+				<Info text={title} id="title" />
+				<Info text={finalDuration} id="duration" />
+			</div>
+		);
 	}
 }
 
@@ -24,10 +47,19 @@ class Info extends React.Component {
 	}
 }
 
+class AlbumArtContainer extends React.Component {
+	render() {
+		let art = require('./album_art/' + this.props.tracks[this.props.songCount]["albumArt"] + '.jpg');
+		return (
+			<AlbumArt src={art} />
+			);
+	}
+}
+
 class AlbumArt extends React.Component {
 	render() {
 		return (
-			<img id={this.props.id} alt="album" />
+			<img id="thumbnail" src={this.props.src} alt="album" />
 			);
 	}
 }
@@ -37,14 +69,15 @@ class MusicPlayer extends React.Component {
 		super(props);
 		this.state = {
 			initial: true,
-			tracks: [],
 			songCount: 0,
-			nowPlaying: undefined,
+			song: undefined,
+			tracks: [],
 			status: "play",
+			playPauseButton: playButton,
 		};
 	}
 
-	componentDidMount() {
+	componentWillMount() {
 		// Get the array of tracks from the json supplied in result.
 		let tracks = result["main"];
 		// After setting the state, load the first song and then proceed to create and display the appropriate thumbnail.
@@ -54,20 +87,15 @@ class MusicPlayer extends React.Component {
 			return {
 				tracks: tracks,
 			}
-		}, () => this.createSong(this.createThumb));
+		}, () => {
+			let song = this.createSong();
+			this.setState({
+				song: song,
+			});
+		});
 	}
 
-	createSong(callback) {
-		// Get the 'play' button.
-		let playImage = document.getElementById('play');
-		// If there's a song currently playing, stop it and clear it.
-		if (this.state.nowPlaying) {
-			this.state.nowPlaying.stop();
-			this.setState({
-				nowPlaying: undefined,
-			});
-		}
-
+	createSong() {
 		// Create a new Howler object and load the appropriate song.
 		let song = new Howl({
 			src: [require('./music/' + this.state.tracks[this.state.songCount]["music"])],
@@ -75,99 +103,67 @@ class MusicPlayer extends React.Component {
 				// If this is the first time a song is being loaded, don't play automatically.
 				// Otherwise, play the song automatically.
 				if (this.state.initial) this.setState({initial: false});
-				else this.state.nowPlaying.play();				
-				this.createDuration(this);
+				else this.state.song.play();
 			},
 			onplay: () => {
-				playImage.src = pauseButton;
 				this.setState({
+						playPauseButton: pauseButton,
 						status: "pause",
 					});
 			},
 			onpause: () => {
-				playImage.src = playButton;
 				this.setState({
+					playPauseButton: playButton,
 					status: "play",
-				})
+				});
 			},
 			onend: () => {
 				// When a song is finished playing, proceed to the next one in queue.
-				playImage.src = playButton;
+				this.setState({
+					playPauseButton: pauseButton,
+					status: "play",
+				});
 				this.skipTrack();
 			}
 		});
 	
-		// Save the current song in state, and then proceed to execute the callback function passed in parameters
-		// if defined.
-		this.setState((prevState) => {
-			return {
-				nowPlaying: song,
-			}
-		}, () => {callback ? callback(this, this.createInfo) : 0;});
-	}
-
-	createThumb(caller, callback) {
-		let art = require('./album_art/' + caller.state.tracks[caller.state.songCount]["albumArt"] + '.jpg');
-		document.getElementById('thumbnail').src = art;
-		callback ? callback(caller) : 0;
-	}
-
-	createInfo(caller, callback) {
-		let artist = caller.state.tracks[caller.state.songCount]["artist"];
-		let title = caller.state.tracks[caller.state.songCount]["music"].replace(/.mp3|.m4a/, '');
-		document.getElementById('artist').textContent = artist;
-		document.getElementById('title').textContent = title;
-		callback ? callback(caller) : 0;
-	}
-
-	createDuration(caller) {
-		let durationSeconds =  caller.state.nowPlaying.duration();
-		let minutes = Math.floor(durationSeconds / 60);
-		let seconds = durationSeconds%60;
-		function quickFormat(string,pad,length) {
-			return (new Array(length+1).join(pad)+string).slice(-length);
-		}
-		let finalDuration = quickFormat(minutes,'0',2)+':'+quickFormat(seconds,'0',2);
-		document.getElementById('duration').textContent = finalDuration;
+		return song;
 	}
 
 	handlePlayAndPause() {
-		if (this.state.status === "play") {
-			if(!this.state.nowPlaying) {
-				this.createSong(this.createThumb);
-			} else this.state.nowPlaying.play();
-		} else if (this.state.status === "pause") {
-			this.state.nowPlaying.pause();
-		}
+		this.state.status === "play" ? this.state.song.play() : this.state.song.pause();
 	}
 
-	skipTrack() {
+	handlePreviousOrNext(direction) {
+		this.state.song.unload();
 		this.setState((prevState) => {
-			return {songCount: ((prevState.songCount === this.state.tracks.length - 1) ? 0 : prevState.songCount + 1)}
-		}, () => this.createSong(this.createThumb));
-	}
-
-	backTrack() {
-		this.setState((prevState) => {
-			return {songCount: ((prevState.songCount === 0) ? this.state.tracks.length - 1 : prevState.songCount - 1)}
-		}, () => this.createSong(this.createThumb));
+			return {
+				songCount: (direction ? 
+					(prevState.songCount === this.state.tracks.length - 1 ? 0 : prevState.songCount + 1) : 
+					(prevState.songCount === 0 ? this.state.tracks.length - 1 : prevState.songCount - 1)),
+				}
+		}, () => {
+			let song = this.createSong();
+			this.setState({
+				song: song,
+			});
+		});
 	}
 
 	render() {
 		return (
 			<div className="wrapper">
 				<div className="top">
-					<AlbumArt id="thumbnail" />
-					<div className="info">
-							<Info text="-" id="artist" />
-							<Info text="-" id="title" />
-							<Info text="--:--" id="duration" />
-					</div>
+					<AlbumArtContainer tracks={this.state.tracks} songCount={this.state.songCount} />
+						<InfoContainer
+							tracks={this.state.tracks}
+							songCount={this.state.songCount}
+							song={this.state.song} />
 				</div>
 				<div className="bottom">
-					<Control id="previous" imageUrl={prevButton} controlAction={() => this.backTrack()} />
-					<Control id="play" imageUrl={playButton} controlAction={() => this.handlePlayAndPause()} />
-					<Control id="next" imageUrl={nextButton} controlAction={() => this.skipTrack()} />
+					<Control id="previous" imageUrl={prevButton} controlAction={() => this.handlePreviousOrNext(0)} />
+					<Control id="play" imageUrl={this.state.playPauseButton} controlAction={() => this.handlePlayAndPause()} />
+					<Control id="next" imageUrl={nextButton} controlAction={() => this.handlePreviousOrNext(1)} />
 				</div>
 			</div>
 			);
