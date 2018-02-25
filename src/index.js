@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles.css';
+import PropTypes from 'prop-types';
 import result from './json/result.json';
 import {Howl} from 'howler';
 import playButton from './images/play.png';
@@ -18,17 +19,25 @@ class Control extends React.Component {
 	}
 }
 
+Control.propTypes = {
+	controlAction: PropTypes.func,
+	id: PropTypes.string,
+	imageUrl: PropTypes.string,
+}
+
 class InfoContainer extends React.Component {
 	render() {
-		let artist = this.props.tracks[this.props.songCount]["artist"];
-		let title = this.props.tracks[this.props.songCount]["music"].replace(/.mp3|.m4a/, '');
+		let artist = this.props.currentTrack.artist;
+		let title = this.props.currentTrack.music.replace(/.mp3|.m4a/, '');
 		let initialDuration = (this.props.song ? this.props.song.duration() : 0);
 		let minutes = Math.floor(initialDuration / 60);
 		let seconds = initialDuration%60;
-		function quickFormat(string,pad,length) {
-			return (new Array(length+1).join(pad)+string).slice(-length);
+		function quickFormat(stringMinutes,padMinutes,lengthMinutes, stringSeconds, padSeconds, lengthSeconds) {
+			let arrOne = (new Array(lengthMinutes+1).join(padMinutes)+stringMinutes).slice(-lengthMinutes);
+			let arrTwo = (new Array(lengthSeconds+1).join(padSeconds)+stringSeconds).slice(-lengthSeconds);
+			return arrOne + ':' + arrTwo;
 		}
-		let finalDuration = quickFormat(minutes,'0',2)+':'+quickFormat(seconds,'0',2);
+		let finalDuration = quickFormat(minutes,'0', 2, seconds, '0', 2);
 		return (
 			<div className="info">
 				<Info text={artist} id="artist" />
@@ -39,6 +48,11 @@ class InfoContainer extends React.Component {
 	}
 }
 
+InfoContainer.propTypes = {
+	currentTrack: PropTypes.object,
+	song: PropTypes.object,
+}
+
 class Info extends React.Component {
 	render() {
 		return (
@@ -47,13 +61,22 @@ class Info extends React.Component {
 	}
 }
 
+Info.propTypes = {
+	id: PropTypes.string,
+	text: PropTypes.string,
+}
+
 class AlbumArtContainer extends React.Component {
 	render() {
-		let art = require('./album_art/' + this.props.tracks[this.props.songCount]["albumArt"] + '.jpg');
+		let art = require('./album_art/' + this.props.currentTrack.albumArt + '.jpg');
 		return (
 			<AlbumArt src={art} />
 			);
 	}
+}
+
+AlbumArtContainer.propTypes = {
+	currentTrack: PropTypes.object,
 }
 
 class AlbumArt extends React.Component {
@@ -62,6 +85,10 @@ class AlbumArt extends React.Component {
 			<img id="thumbnail" src={this.props.src} alt="album" />
 			);
 	}
+}
+
+AlbumArt.propTypes = {
+	src: PropTypes.string,
 }
 
 class MusicPlayer extends React.Component {
@@ -154,10 +181,9 @@ class MusicPlayer extends React.Component {
 		return (
 			<div className="wrapper">
 				<div className="top">
-					<AlbumArtContainer tracks={this.state.tracks} songCount={this.state.songCount} />
+					<AlbumArtContainer currentTrack={this.state.tracks[this.state.songCount]} />
 						<InfoContainer
-							tracks={this.state.tracks}
-							songCount={this.state.songCount}
+							currentTrack={this.state.tracks[this.state.songCount]}
 							song={this.state.song} />
 				</div>
 				<div className="bottom">
