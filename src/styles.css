@@ -32,6 +32,7 @@ body {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	maxHeight: 50px;
 }
 
 .info span {
