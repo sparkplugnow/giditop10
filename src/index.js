@@ -106,7 +106,7 @@ class MusicPlayer extends React.Component {
 
 	componentWillMount() {
 		// Get the array of tracks from the json supplied in result.
-		let tracks = result["main"];
+		let tracks = result.tracks;
 		// After setting the state, load the first song and then proceed to create and display the appropriate thumbnail.
 		// The second action (creating of thumbnail) is passed as a callback function to the createSong function where the 
 		// callback is handled.
@@ -124,8 +124,9 @@ class MusicPlayer extends React.Component {
 
 	createSong() {
 		// Create a new Howler object and load the appropriate song.
+		
 		let song = new Howl({
-			src: [require('./music/' + this.state.tracks[this.state.songCount]["music"])],
+			src: [(this.state.tracks[this.state.songCount].url)],
 			onload: () => {
 				// If this is the first time a song is being loaded, don't play automatically.
 				// Otherwise, play the song automatically.
